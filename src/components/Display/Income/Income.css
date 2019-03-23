@@ -1,0 +1,15 @@
+.income {
+  height: 80%;
+  flex-basis: 60%;
+}
+
+.income__single {
+  height: 15%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}

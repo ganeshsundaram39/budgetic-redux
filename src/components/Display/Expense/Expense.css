@@ -1,0 +1,5 @@
+.expense {
+  height: 80%;
+  flex-basis: 60%;
+  background: red;
+}

@@ -1,4 +1,21 @@
 .display {
-  background: blue;
   height: 55%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.display .income__wrapper,
+.display .expense__wrapper {
+  flex-basis: 50%;
+  height: 100%;
+}
+.display .income__wrapper,
+.display .expense__wrapper {
+  display: flex;
+  align-items: center;
+  padding: 2%;
+}
+
+.display .income__wrapper {
+  justify-content: flex-end;
 }
