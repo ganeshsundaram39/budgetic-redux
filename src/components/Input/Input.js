@@ -3,15 +3,20 @@ import './Input.css';
 import { connect } from 'react-redux';
 var uniqid = require('uniqid');
 class Input extends Component {
+  removeFocusClass = '';
+
   state = {
     input: {
       type: 'income',
       description: '',
-      value: 0
+      value: ''
     }
   };
   handleChange(key, event) {
     const value = event.target.value;
+    if (key === 'type') {
+      this.removeFocusClass = value === 'expense' ? 'red-focus' : '';
+    }
     this.setState(prevState => {
       return {
         input: {
@@ -24,6 +29,14 @@ class Input extends Component {
   handleSubmit(event) {
     if (this.state.input.description && this.state.input.value) {
       this.props.storeInputToGlobal({ ...this.state.input, key: uniqid() });
+      this.setState(prevState => ({
+        input: {
+          type: prevState.input.type,
+          description: '',
+          value: ''
+        }
+      }));
+      this.selectInput.focus();
     }
     event.preventDefault();
   }
@@ -34,9 +47,12 @@ class Input extends Component {
         <form className="input-wrapper" onSubmit={this.handleSubmit.bind(this)}>
           <select
             name="type"
-            className="input-type"
+            className={'add__type ' + this.removeFocusClass}
             value={this.state.input.type}
             onChange={this.handleChange.bind(this, 'type')}
+            ref={select => {
+              this.selectInput = select;
+            }}
           >
             <option value="income">+</option>
             <option value="expense">-</option>
@@ -45,16 +61,22 @@ class Input extends Component {
             type="text"
             value={this.state.input.description}
             onChange={this.handleChange.bind(this, 'description')}
-            className="add__description"
+            className={'add__description ' + this.removeFocusClass}
+            placeholder="Add description"
           />
           <input
             type="number"
             value={this.state.input.value}
             onChange={this.handleChange.bind(this, 'value')}
-            className="add__value"
+            className={'add__value ' + this.removeFocusClass}
+            step="0.50"
+            placeholder="Value"
           />
-          <button type="submit" className="add__btn">
-            <ion-icon name="checkmark-circle-outline" />
+          <button
+            type="submit"
+            className={'add__btn ' + (this.removeFocusClass ? 'red' : '')}
+          >
+            <i className="icon-check" />
           </button>
         </form>
       </div>

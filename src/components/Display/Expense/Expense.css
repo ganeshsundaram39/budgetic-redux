@@ -1,5 +1,54 @@
 .expense {
-  height: 80%;
+  height: 90%;
   flex-basis: 60%;
-  background: red;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.expense__single {
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  border-bottom: 1px solid #e7e7e7;
+  position: relative;
+  transition: all 0.2s;
+  padding-right: 0;
+}
+.expense__single:first-child {
+  border-top: 1px solid #e7e7e7;
+}
+
+.expense__label {
+  color: #ff5049;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.expense__single:hover {
+  padding-right: 10%;
+}
+
+.expense__single:hover .delete {
+  display: inline;
+}
+
+.expense__single .value {
+  color: #ff5049;
+}
+.expense__single .delete {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 10%;
+}
+.expense__single .delete i {
+  color: #ff5049;
+  font-size: 1.8rem;
+  cursor: pointer;
 }

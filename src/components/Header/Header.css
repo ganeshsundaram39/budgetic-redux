@@ -1,7 +1,78 @@
 .header {
-  height: 35%;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  height: 40%;
+  background: linear-gradient(
+      to right bottom,
+      rgb(0, 0, 0),
+      rgba(0, 0, 0, 0.62)
+    ),
     url(../../assets/images/mountainbg.jpeg);
   background-position: bottom center;
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.budget {
+  flex-basis: 30%;
+  height: 90%;
+  color: #fff;
+}
+.budget__title {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 300;
+}
+
+.budget__value {
+  font-weight: 300;
+  font-size: 5rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+.budget__income {
+  margin-bottom: 2%;
+  background-color: #28b9b5;
+}
+
+.budget__income,
+.budget__expenses {
+  padding: 3% 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+.budget__income--text,
+.budget__expenses--text {
+  font-size: 1.3rem;
+  color: #000000d6;
+  margin-top: 2px;
+}
+
+.budget__income--value,
+.budget__expenses--value {
+  letter-spacing: 1px;
+  font-size: 1.3rem;
+}
+.budget__income--percentage,
+.budget__expenses--percentage {
+  width: 34px;
+  font-size: 11px;
+  padding: 3px 0;
+  margin-left: 10px;
+}
+
+.budget__expenses {
+  background-color: #ff5049;
+}
+.budget__expenses--percentage {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  border-radius: 3px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
 }

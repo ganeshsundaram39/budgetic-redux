@@ -18,7 +18,7 @@
   width: 55px;
   border: 1px solid #e7e7e7;
   height: 44px;
-  font-size: 18px;
+  font-size: 1.9rem;
   color: inherit;
   background-color: #fff;
   margin-right: 10px;
@@ -32,7 +32,7 @@
   background-color: #fff;
   color: inherit;
   font-family: inherit;
-  font-size: 14px;
+  font-size: 1.6rem;
   padding: 12px 15px;
   margin-right: 10px;
   border-radius: 5px;
@@ -43,16 +43,34 @@
 }
 
 .add__value {
-  width: 10%;
+  width: 13%;
 }
 .add__btn {
-  font-size: 35px;
+  font-size: 3.188rem;
   background: none;
   border: none;
-  color: #3498db;
+  color: #28b9b5;
   cursor: pointer;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1.1;
-  margin-left: 10px;
+  transition: all 0.3s;
+}
+.add__type:focus,
+.add__description:focus,
+.add__value:focus {
+  outline: none;
+  border: 1px solid #28b9b5;
+}
+
+.red-focus:focus {
+  border: 1px solid #ff5049 !important;
+}
+
+.red {
+  color: #ff5049 !important;
+}
+
+.save__btn:active,
+.add__btn:active,
+.download__btn:active,
+.history-toggle__btn:active {
+  transform: translateY(2px);
 }

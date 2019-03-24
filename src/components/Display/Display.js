@@ -7,10 +7,13 @@ function Display(props) {
   return (
     <div className="display">
       <div className="income__wrapper">
-        <Income incomeList={props.incomeList} />
+        <Income incomeList={props.incomeList} removeInput={props.removeInput} />
       </div>
       <div className="expense__wrapper">
-        <Expense expenseList={props.expenseList} />
+        <Expense
+          expenseList={props.expenseList}
+          removeInput={props.removeInput}
+        />
       </div>
     </div>
   );
@@ -24,7 +27,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    // storeInputToGlobal: input => dispatch({ type: 'NEW-INPUT', value: input })
+    removeInput: key => dispatch({ type: 'REMOVE-INPUT', value: key })
   };
 };
 export default connect(
