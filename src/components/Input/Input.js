@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 var uniqid = require('uniqid');
 class Input extends Component {
   removeFocusClass = '';
-
+  budgetSaved = false;
   state = {
     input: {
       type: 'income',
@@ -40,7 +40,9 @@ class Input extends Component {
     }
     event.preventDefault();
   }
-
+  saveBudget = () => {
+    this.storeBudgetToLocalStorage();
+  };
   render() {
     return (
       <div className="input">
@@ -78,6 +80,9 @@ class Input extends Component {
           >
             <i className="icon-check" />
           </button>
+          {/* <button className="save__btn" onClick={this.saveBudget}>
+            <i className="icon-save-on-cloud" />
+          </button> */}
         </form>
       </div>
     );
@@ -88,7 +93,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    storeInputToGlobal: input => dispatch({ type: 'NEW-INPUT', value: input })
+    storeInputToGlobal: input => dispatch({ type: 'NEW-INPUT', value: input }),
+    storeBudgetToLocalStorage: () => dispatch({ type: 'SAVE-BUDGET' })
   };
 };
 export default connect(

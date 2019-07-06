@@ -45,7 +45,8 @@
 .add__value {
   width: 13%;
 }
-.add__btn {
+.add__btn,
+.save__btn {
   font-size: 3.188rem;
   background: none;
   border: none;
@@ -55,7 +56,8 @@
 }
 .add__type:focus,
 .add__description:focus,
-.add__value:focus {
+.add__value:focus,
+.save__btn:focus {
   outline: none;
   border: 1px solid #28b9b5;
 }
