@@ -39,8 +39,12 @@ const Header = props => {
   );
 };
 const getInputs = state => ({
-  incomeList: state.inputs.filter(input => input.type === 'income') || [],
-  expenseList: state.inputs.filter(input => input.type === 'expense') || []
+  incomeList: state.inputs
+    ? state.inputs.filter(input => input.type === 'income')
+    : [],
+  expenseList: state.inputs
+    ? state.inputs.filter(input => input.type === 'expense')
+    : []
 });
 
 const getTotal = list =>

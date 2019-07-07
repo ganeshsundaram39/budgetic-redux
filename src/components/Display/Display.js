@@ -21,8 +21,14 @@ function Display(props) {
 
 const mapStateToProps = state => {
   return {
-    incomeList: state.inputs.filter(input => input.type === 'income') || [],
-    expenseList: state.inputs.filter(input => input.type === 'expense') || []
+    incomeList:
+      state.inputs && state.inputs.length > 0
+        ? state.inputs.filter(input => input.type === 'income')
+        : [],
+    expenseList:
+      state.inputs && state.inputs.length > 0
+        ? state.inputs.filter(input => input.type === 'expense')
+        : []
   };
 };
 const mapDispatchToProps = dispatch => {

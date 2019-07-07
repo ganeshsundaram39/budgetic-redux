@@ -27,6 +27,7 @@ class Input extends Component {
     });
   }
   handleSubmit(event) {
+    event.preventDefault();
     if (this.state.input.description && this.state.input.value) {
       this.props.storeInputToGlobal({ ...this.state.input, key: uniqid() });
       this.setState(prevState => ({
@@ -38,11 +39,8 @@ class Input extends Component {
       }));
       this.selectInput.focus();
     }
-    event.preventDefault();
   }
-  saveBudget = () => {
-    this.storeBudgetToLocalStorage();
-  };
+
   render() {
     return (
       <div className="input">
