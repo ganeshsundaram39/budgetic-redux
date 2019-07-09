@@ -39,6 +39,10 @@ const reducer = (state = initialState, action) => {
       const removeInput = [...state.inputs].filter(
         input => input.key !== action.value
       );
+
+      if (removeInput.length === 0) {
+        return { ...state };
+      }
       return {
         ...state,
         inputs: removeInput,
@@ -46,6 +50,11 @@ const reducer = (state = initialState, action) => {
           ...state.allSaved,
           ...{ [getCurrentMonthYear()]: removeInput }
         }
+      };
+    case 'FETCH-MONTH':
+      return {
+        ...state,
+        inputs: state.allSaved[action.value]
       };
     case REHYDRATE:
       const allSaved = action.payload
@@ -61,8 +70,8 @@ const reducer = (state = initialState, action) => {
         allSaved
       };
     default:
+      return state;
   }
-  return state;
 };
 
 export default reducer;

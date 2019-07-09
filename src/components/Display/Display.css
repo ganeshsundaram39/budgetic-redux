@@ -2,18 +2,17 @@
   height: 50%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .display .income__wrapper,
-.display .expense__wrapper {
-  flex-basis: 50%;
+.display .expense__wrapper,
+.display .history__wrapper {
+  flex-basis: 25%;
   height: 100%;
-}
-.display .income__wrapper,
-.display .expense__wrapper {
   display: flex;
   align-items: center;
-  padding: 2%;
+  padding: 1% 2%;
 }
 
 .display .income__wrapper {

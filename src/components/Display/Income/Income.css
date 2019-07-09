@@ -1,6 +1,6 @@
 .income {
   height: 90%;
-  flex-basis: 60%;
+  flex-basis: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   padding-right: 1%;
