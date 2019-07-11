@@ -1,21 +1,12 @@
 import { REHYDRATE } from 'redux-persist';
 
-const monthNames = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-];
-const getCurrentMonthYear = () =>
-  monthNames[new Date().getMonth()] + ' ' + new Date().getFullYear();
+import {
+  NEW_INPUT,
+  REMOVE_INPUT,
+  FETCH_MONTH,
+  REMOVE_MONTH
+} from '../types/types';
+import getCurrentMonthYear from './months/months';
 
 const initialState = {
   inputs: [],
@@ -25,36 +16,42 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'NEW-INPUT':
+    case NEW_INPUT:
       const newInputs = [...state.inputs, action.value];
       return {
         ...state,
         inputs: newInputs,
         allSaved: {
           ...state.allSaved,
-          ...{ [getCurrentMonthYear()]: newInputs }
+          ...{ [state.currentMonthYear]: newInputs }
         }
       };
-    case 'REMOVE-INPUT':
+    case REMOVE_INPUT:
       const removeInput = [...state.inputs].filter(
         input => input.key !== action.value
       );
-
-      if (removeInput.length === 0) {
-        return { ...state };
-      }
       return {
         ...state,
         inputs: removeInput,
         allSaved: {
           ...state.allSaved,
-          ...{ [getCurrentMonthYear()]: removeInput }
+          ...{ [state.currentMonthYear]: removeInput }
         }
       };
-    case 'FETCH-MONTH':
+    case FETCH_MONTH:
       return {
         ...state,
+        currentMonthYear: action.value,
         inputs: state.allSaved[action.value]
+      };
+    case REMOVE_MONTH:
+      const allSavedMonths = { ...state.allSaved };
+      const currentMonthYear = getCurrentMonthYear();
+      delete allSavedMonths[action.value];
+      return {
+        ...state,
+        ...(state.currentMonthYear === currentMonthYear ? { inputs: [] } : {}),
+        allSaved: allSavedMonths
       };
     case REHYDRATE:
       const allSaved = action.payload
@@ -63,7 +60,9 @@ const reducer = (state = initialState, action) => {
           : {}
         : {};
       const restoreInputs =
-        Object.keys(allSaved).length > 0 ? allSaved[getCurrentMonthYear()] : [];
+        Object.keys(allSaved).length > 0
+          ? allSaved[state.currentMonthYear]
+          : [];
       return {
         ...state,
         inputs: restoreInputs && restoreInputs.length > 0 ? restoreInputs : [],

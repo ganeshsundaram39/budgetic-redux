@@ -8,11 +8,16 @@ const History = props => {
       {props.savedList.length > 0 &&
         props.savedList.map((saveli, i) => (
           <div className="income__single" key={i}>
-            <span className="description">{saveli}</span>
+            <span
+              className="description month"
+              onClick={props.getSavedListContent.bind(null, saveli)}
+            >
+              {saveli}
+            </span>
             <span className="delete">
               <i
                 className="icon-delete"
-                onClick={() => props.getSaveListContent(saveli)}
+                onClick={props.removeMonth.bind(null, saveli)}
               />
             </span>
           </div>

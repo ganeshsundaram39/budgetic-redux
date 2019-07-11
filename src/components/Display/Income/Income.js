@@ -15,7 +15,7 @@ const Income = props => {
             <span className="delete">
               <i
                 className="icon-delete"
-                onClick={() => props.removeInput(inc.key)}
+                onClick={props.removeInput.bind(null, inc.key)}
               />
             </span>
           </div>

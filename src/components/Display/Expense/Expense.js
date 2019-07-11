@@ -14,7 +14,7 @@ const Expense = props => {
             <span className="delete">
               <i
                 className="icon-delete"
-                onClick={() => props.removeInput(exp.key)}
+                onClick={props.removeInput.bind(null, exp.key)}
               />
             </span>
           </div>

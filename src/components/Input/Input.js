@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NEW_INPUT } from '../../types/types';
 import './Input.css';
 import { connect } from 'react-redux';
 var uniqid = require('uniqid');
@@ -78,9 +79,6 @@ class Input extends Component {
           >
             <i className="icon-check" />
           </button>
-          {/* <button className="save__btn" onClick={this.saveBudget}>
-            <i className="icon-save-on-cloud" />
-          </button> */}
         </form>
       </div>
     );
@@ -91,8 +89,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    storeInputToGlobal: input => dispatch({ type: 'NEW-INPUT', value: input }),
-    storeBudgetToLocalStorage: () => dispatch({ type: 'SAVE-BUDGET' })
+    storeInputToGlobal: input => dispatch({ type: NEW_INPUT, value: input })
   };
 };
 export default connect(

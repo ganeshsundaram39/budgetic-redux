@@ -1,4 +1,5 @@
 import React from 'react';
+import { FETCH_MONTH, REMOVE_INPUT, REMOVE_MONTH } from '../../types/types';
 import './Display.css';
 import Income from './Income/Income';
 import Expense from './Expense/Expense';
@@ -19,7 +20,8 @@ function Display(props) {
       <div className="history__wrapper">
         <History
           savedList={props.savedList}
-          getSaveListContent={props.getSaveListContent}
+          getSavedListContent={props.getSavedListContent}
+          removeMonth={props.removeMonth}
         />
       </div>
     </div>
@@ -44,8 +46,9 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    removeInput: key => dispatch({ type: 'REMOVE-INPUT', value: key }),
-    getSaveListContent: month => dispatch({ type: 'FETCH-MONTH', value: month })
+    getSavedListContent: month => dispatch({ type: FETCH_MONTH, value: month }),
+    removeInput: key => dispatch({ type: REMOVE_INPUT, value: key }),
+    removeMonth: month => dispatch({ type: REMOVE_MONTH, value: month })
   };
 };
 export default connect(
