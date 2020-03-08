@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/budgetic-redux/precache-manifest.5b3af1b55eada47ad97e836e6640be08.js"
+  "/budgetic-redux/precache-manifest.116e7c565d6f921c2f3085a478f3e071.js"
 );
 
 workbox.clientsClaim();
